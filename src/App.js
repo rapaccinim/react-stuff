@@ -1,39 +1,45 @@
-// Marco Rapaccini - Exploring cool React stuff with Material-UI and styled-components libraries
+/*
+ *  Exploring cool React stuff with Material-UI and styled-components libraries.
+ */ 
 
+import React, { Suspense, useState } from 'react';
 import styled from 'styled-components';
-import Switch from '@material-ui/core/Switch';
-import { useState } from 'react'
+import Button from '@material-ui/core/Button';
+import LoadingSpinner from './components/LoadingSpinner';
 
-// we can pass props and use them in styled-components
+// let's load/import non-critical components with React.lazy()
+const ThemeColorController = React.lazy(()=> import('./components/ThemeColorController')); 
+const SimpleModal = React.lazy(()=> import('./components/SimpleModal'));
+
+
+// With styled-components it's possible to give specific names to HTML tags and pass them props
 const AppContainer = styled.div`
-  background-color: ${props => props.backgroundColor};
   min-height: 100vh;
+  background-color: ${props => props.backgroundColor};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-`;
-
-const ThemeColorName = styled.div`
+  font-size: 16px;
   color: #000;
 `;
 
-export default function App() {
+const App = () => {
 
-  // this is the state that holds the current background color
+  // let's define the state(s)
   const [themeColor, setThemeColor] = useState("Azure");
+  const [showModalBox, setShowModalBox] = useState(false);
 
   return (
-    /* styled-components help us to define components with custom names (e.g. AppContainer) */
-    <AppContainer backgroundColor={themeColor}>
-      { /* Next component is a default switch button coming from Material-UI library */}
-      <Switch
-        onChange={() => setThemeColor(themeColor === "Azure" ? "Gainsboro" : "Azure")}
-        name="themeColorSwitch"
-      />
-      <ThemeColorName>Color is: {themeColor}</ThemeColorName>
-    </AppContainer>
+    <Suspense fallback={<LoadingSpinner src={process.env.PUBLIC_URL+"/assets/loadingSpinner.svg"}/>}>
+      <AppContainer backgroundColor={themeColor}>
+        <ThemeColorController themeColor={themeColor} setThemeColor={setThemeColor}/>
+        <Button variant="contained" onClick={() => setShowModalBox(!showModalBox)}>Show Modal</Button>
+        <SimpleModal showModalBox={showModalBox} setShowModalBox={setShowModalBox} />
+      </AppContainer>
+    </Suspense>
   );
+
 }
+
+export default App;
