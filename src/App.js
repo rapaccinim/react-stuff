@@ -11,7 +11,6 @@ import LoadingSpinner from './components/LoadingSpinner';
 const ThemeColorController = React.lazy(()=> import('./components/ThemeColorController')); 
 const SimpleModal = React.lazy(()=> import('./components/SimpleModal'));
 
-
 // With styled-components it's possible to give specific names to HTML tags and pass them props
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -24,6 +23,10 @@ const AppContainer = styled.div`
   color: #000;
 `;
 
+const MrWolfPic = styled.img`
+  margin: 0px 0px 20px 0px;
+`;
+
 const App = () => {
 
   // let's define the state(s)
@@ -34,7 +37,8 @@ const App = () => {
     <Suspense fallback={<LoadingSpinner src={process.env.PUBLIC_URL+"/assets/loadingSpinner.svg"}/>}>
       <AppContainer backgroundColor={themeColor}>
         <ThemeColorController themeColor={themeColor} setThemeColor={setThemeColor}/>
-        <Button variant="contained" onClick={() => setShowModalBox(!showModalBox)}>Show Modal</Button>
+        <MrWolfPic src="https://i.gifer.com/fug.gif"/>
+        <Button variant="contained"color="primary" onClick={() => setShowModalBox(!showModalBox)}>Hire Mr Wolf</Button>
         <SimpleModal showModalBox={showModalBox} setShowModalBox={setShowModalBox} />
       </AppContainer>
     </Suspense>
