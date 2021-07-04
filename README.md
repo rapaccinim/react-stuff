@@ -12,19 +12,10 @@ This is a repo about React stuff that I use to explore powerful things and limit
 * Material-UI [learn more](https://material-ui.com/getting-started/installation/)
 
 ## Installation
-TBD
+* [Clone](https://git-scm.com/book/it/v2/Git-Basics-Getting-a-Git-Repository) the project into your local environment
+* Run `yarn` command inside the main project directory to install all the dependencies
 
-## Create a React App from scratch
-If you want to create a React from scratch, just run:
-```
-npx create-react-app your-new-app
-```
-If you already are in the folder you want to use, run:
-```
-npx create-react-app .
-```
-
-## Using yarn
+## Using yarn to run the app
 
 In the project directory, you can run:
 
@@ -50,3 +41,13 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Create a React App from scratch
+If you want to create a React from scratch, just run:
+```
+npx create-react-app your-new-app
+```
+If you already are in the folder you want to use, run:
+```
+npx create-react-app .
+```
