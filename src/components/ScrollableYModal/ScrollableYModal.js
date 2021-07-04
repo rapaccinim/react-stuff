@@ -1,5 +1,5 @@
 /*
- * This component is a modal box that is vertically resizable.
+ * This component is a modal box that automatically has vertical scrollbar if content is too long and/or if modal is risized.
  * A modal looks pretty easy to do, but when you have to deal with Y-axis resizing things start to get complicated.
  * No worries, I made from scratch this modal that could help :)
  * Source of inspiration: https://css-tricks.com/considerations-styling-modal/
@@ -12,10 +12,10 @@ import CloseIcon from '@material-ui/icons/Close';
 // animation for fade in
 const fadeIn = keyframes`
     from {
-        opacity:0;
+        margin-left: -100%;
     }
     to {
-        opacity:1;
+        margin-left: 0%;
     }
 `;
 
@@ -42,7 +42,7 @@ const ModalBoxContainer = styled.div`
     z-index: 1200;
     height: 550px;
     max-height: calc(100% - 6px);
-    width: 40%;
+    width: 50%;
     max-width: 650px;
     border: 2px solid black;
     border-radius: 0px 25px 25px 0px;
@@ -52,12 +52,14 @@ const ModalBoxContainer = styled.div`
     -moz-animation: ${fadeIn} 0.5s; /* Firefox */
     -webkit-animation: ${fadeIn} 0.5s; /* Safari and Chrome */
     -o-animation: ${fadeIn} 0.5s; /* Opera */
+
+    // TBD: add responsiveness
 `;
 
 const ModalBoxControl = styled.div`
     position: absolute;
-    top: 10px;
-    right: 20px;
+    top: 0px;
+    right: 11px;
     z-index: 1200;
 `;
 
@@ -75,6 +77,7 @@ const ScrollableContent = styled.div`
     height: calc(100% - 140px);
     overflow-y: auto;
     margin: 10px 30px 30px 30px;
+    padding: 0px 10px 0px 0px;
 
     /* scroll bar width */
     &::-webkit-scrollbar {
@@ -109,7 +112,7 @@ To make restitution with Jimmie Dimmick for the inconvenience, Mister Wolf was a
 
 `;
 
-const ResizableYModal = ({ showModalBox, setShowModalBox }) => {
+const ScrollableYModal = ({ showModalBox, setShowModalBox }) => {
     return (
         showModalBox &&
         <div>
@@ -136,4 +139,4 @@ const ResizableYModal = ({ showModalBox, setShowModalBox }) => {
     );
 };
 
-export default ResizableYModal;
+export default ScrollableYModal;

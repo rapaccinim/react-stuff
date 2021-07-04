@@ -10,7 +10,7 @@ import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 // let's load/import non-critical components with React.lazy()
 const ThemeColorController = React.lazy(()=> import('./components/ThemeColorController/ThemeColorController')); 
 const SimpleModal = React.lazy(()=> import('./components/SimpleModal/SimpleModal'));
-const ResizableYModal = React.lazy( () => import('./components/ResizableYModal/ResizableYModal'));
+const ScrollableYModal = React.lazy( () => import('./components/ScrollableYModal/ScrollableYModal'));
 
 // With styled-components it's possible to give specific names to HTML tags and pass them props
 const AppContainer = styled.div`
@@ -44,7 +44,7 @@ const App = () => {
         <br/>
         <Button variant="contained" onClick={() => setShowResizableYModal(!showResizableYModal)}>Mr Wolf Bio</Button>
         <SimpleModal showModalBox={showSimpleModal} setShowModalBox={setShowSimpleModal} />
-        <ResizableYModal showModalBox={showResizableYModal} setShowModalBox={setShowResizableYModal} />
+        <ScrollableYModal showModalBox={showResizableYModal} setShowModalBox={setShowResizableYModal} />
       </AppContainer>
     </Suspense>
   );
