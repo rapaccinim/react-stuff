@@ -1,5 +1,5 @@
 /*
- * This component is responsible show a rotating spinner that can be used while waiting for content loading.
+ * This component is responsible for showing a rotating spinner that can be used while waiting for content loading.
  * I'm using the Switch component coming from Material-UI.
  */ 
 
@@ -16,6 +16,6 @@ const LoadingSpinner = () => {
     return (
         <LoadingSpinnerSVG alt="Loading spinner" src={process.env.PUBLIC_URL+"/assets/loadingSpinner.svg"}/>
     );
-}
+};
 
 export default LoadingSpinner;

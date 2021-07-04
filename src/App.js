@@ -5,11 +5,12 @@
 import React, { Suspense, useState } from 'react';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
-import LoadingSpinner from './components/LoadingSpinner';
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 
 // let's load/import non-critical components with React.lazy()
-const ThemeColorController = React.lazy(()=> import('./components/ThemeColorController')); 
-const SimpleModal = React.lazy(()=> import('./components/SimpleModal'));
+const ThemeColorController = React.lazy(()=> import('./components/ThemeColorController/ThemeColorController')); 
+const SimpleModal = React.lazy(()=> import('./components/SimpleModal/SimpleModal'));
+const ResizableYModal = React.lazy( () => import('./components/ResizableYModal/ResizableYModal'));
 
 // With styled-components it's possible to give specific names to HTML tags and pass them props
 const AppContainer = styled.div`
@@ -31,15 +32,19 @@ const App = () => {
 
   // let's define the state(s)
   const [themeColor, setThemeColor] = useState("Azure");
-  const [showModalBox, setShowModalBox] = useState(false);
+  const [showSimpleModal, setShowSimpleModal] = useState(false);
+  const [showResizableYModal, setShowResizableYModal] = useState(false)
 
   return (
     <Suspense fallback={<LoadingSpinner src={process.env.PUBLIC_URL+"/assets/loadingSpinner.svg"}/>}>
       <AppContainer backgroundColor={themeColor}>
         <ThemeColorController themeColor={themeColor} setThemeColor={setThemeColor}/>
         <MrWolfPic src="https://i.gifer.com/fug.gif"/>
-        <Button variant="contained"color="primary" onClick={() => setShowModalBox(!showModalBox)}>Hire Mr Wolf</Button>
-        <SimpleModal showModalBox={showModalBox} setShowModalBox={setShowModalBox} />
+        <Button variant="contained"color="primary" onClick={() => setShowSimpleModal(!showSimpleModal)}>Hire Mr Wolf</Button>
+        <br/>
+        <Button variant="contained"color="primary" onClick={() => setShowResizableYModal(!showResizableYModal)}>Mr Wolf Bio</Button>
+        <SimpleModal showModalBox={showSimpleModal} setShowModalBox={setShowSimpleModal} />
+        <ResizableYModal showModalBox={showResizableYModal} setShowModalBox={setShowResizableYModal} />
       </AppContainer>
     </Suspense>
   );

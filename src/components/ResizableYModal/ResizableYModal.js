@@ -1,6 +1,9 @@
 /*
-* This component is responsible for showing the overlay and the modal
-*/ 
+ * This component is a modal box that is vertically resizable.
+ * A modal looks pretty easy to do, but when you have to deal with Y-axis resizing things start to get complicated.
+ * No worries, I made from scratch this modal that could help :)
+ * Source of inspiration: https://css-tricks.com/considerations-styling-modal/
+ */ 
 
 import styled, {keyframes} from 'styled-components';
 import Button from '@material-ui/core/Button';
@@ -62,14 +65,7 @@ const ModalBoxControl = styled.div`
     top: 10px;
 `;
 
-const ModalBoxVideo = styled.div`
-    width: 80%;
-    height: 60%;
-    margin: 0px 0px 20px 0px;
-`;
-
-const SimpleModal = ({ showModalBox, setShowModalBox }) => {
-
+const ResizableYModal = ({ showModalBox, setShowModalBox }) => {
     return (
         showModalBox &&
         <ModalBox>
@@ -78,20 +74,10 @@ const SimpleModal = ({ showModalBox, setShowModalBox }) => {
                 <ModalBoxControl>
                     <Button variant="contained" color="secondary" onClick={() => setShowModalBox(!showModalBox)}>Close</Button>
                 </ModalBoxControl>
-                <ModalBoxVideo>
-                    <embed  src="https://www.youtube.com/embed/dTkg6wq6ma4"
-                            wmode="transparent"
-                            type="video/mp4"
-                            width="100%" height="100%"
-                            allow="autoplay; encrypted-media; picture-in-picture"
-                            allowFullScreen
-                    />
-                </ModalBoxVideo>
-                <a href="https://quentin-tarantino.fandom.com/wiki/The_Wolf" target="_blank" rel="noreferrer">Who is Mr Wolf?</a>
+                <div>Hello</div>
             </ModalBoxContent>
         </ModalBox>
     );
-}
+};
 
-export default SimpleModal;
-
+export default ResizableYModal;
