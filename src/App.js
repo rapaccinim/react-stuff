@@ -40,9 +40,9 @@ const App = () => {
       <AppContainer backgroundColor={themeColor}>
         <ThemeColorController themeColor={themeColor} setThemeColor={setThemeColor}/>
         <MrWolfPic src="https://i.gifer.com/fug.gif"/>
-        <Button variant="contained"color="primary" onClick={() => setShowSimpleModal(!showSimpleModal)}>Hire Mr Wolf</Button>
+        <Button variant="contained" color="primary" onClick={() => setShowSimpleModal(!showSimpleModal)}>Hire Mr Wolf</Button>
         <br/>
-        <Button variant="contained"color="primary" onClick={() => setShowResizableYModal(!showResizableYModal)}>Mr Wolf Bio</Button>
+        <Button variant="contained" onClick={() => setShowResizableYModal(!showResizableYModal)}>Mr Wolf Bio</Button>
         <SimpleModal showModalBox={showSimpleModal} setShowModalBox={setShowSimpleModal} />
         <ResizableYModal showModalBox={showResizableYModal} setShowModalBox={setShowResizableYModal} />
       </AppContainer>
